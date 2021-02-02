@@ -7,12 +7,13 @@ import ReposResults from 'src/components/ReposResults';
 import Message from 'src/components/Message';
 
 // Import data
+import logoGithub from './logo-github.png';
 import './style.scss';
 
 // == Component
 const Github = () => (
   <div className="git">
-    <h1>Bienvenue dans la recherche de Github !</h1>
+    <img src={logoGithub} alt="github logo" />
     <SearchBar />
     <ReposResults />
     <Message />

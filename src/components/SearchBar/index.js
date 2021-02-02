@@ -6,9 +6,13 @@ import './style.scss';
 
 // Component
 const SearchBar = () => (
-  <div>
-    <h1>Ceci est mon input de recherche !</h1>
-  </div>
+  <form className="form">
+    <input
+      type="text"
+      placeholder="Rechercher un repo"
+      className="search"
+    />
+  </form>
 );
 
 // Export

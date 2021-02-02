@@ -7,7 +7,10 @@ import './style.scss';
 // Component
 const ReposResults = () => (
   <div>
-    <h1>Ceci est mon input de résultats !</h1>
+    <input
+      type="text"
+      placeholder="La recherche a donné X résultats"
+    />
   </div>
 );
 

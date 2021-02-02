@@ -1,13 +1,18 @@
 // Import npm
 import React from 'react';
 
+// Import component
+import Repo from './Repo';
+
 // Import data
 import './style.scss';
 
 // Component
 const Message = () => (
-  <div>
-    <h1>Ceci est ma zone d'affichage des repos !</h1>
+  <div className="wrapper">
+    <div className="repo">
+      <Repo />
+    </div>
   </div>
 );
 
