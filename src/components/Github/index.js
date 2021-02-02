@@ -13,7 +13,7 @@ import './style.scss';
 // == Component
 const Github = () => (
   <div className="git">
-    <img src={logoGithub} alt="github logo" />
+    <img className="logo" src={logoGithub} alt="github logo" />
     <SearchBar />
     <ReposResults />
     <Message />

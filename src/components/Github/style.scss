@@ -1,6 +1,23 @@
-.git {
-  width: 500px;
-  margin: 1em auto;
-  text-align: center;
+@use 'src/styles/vars' as v;
+
+body {
+  min-height: 100vh;
+  font-family: sans-serif, serif;
+  line-height: 1.6;
+  background-color: #fff;
 }
 
+.git {
+  width: 80%;
+  margin: 1em auto;
+  text-align: center;
+  background-color: v.$primary-color;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+ width: 30%;
+ max-width: 50%;
+ margin: v.$gutter/2 auto;
+}

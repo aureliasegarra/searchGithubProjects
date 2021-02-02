@@ -6,11 +6,14 @@ import './style.scss';
 
 // Component
 const SearchBar = () => (
-  <form className="form">
+  <form className="search">
+    <button type="submit" className="searchButton">
+      <i className="fa fa-search" />
+    </button>
     <input
       type="text"
-      placeholder="Rechercher un repo"
-      className="search"
+      placeholder="Search ..."
+      className="searchTerm"
     />
   </form>
 );
