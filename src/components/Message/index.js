@@ -12,6 +12,11 @@ const Message = () => (
   <div className="wrapper">
     <div className="repo">
       <Repo />
+      <Repo />
+      <Repo />
+      <Repo />
+      <Repo />
+      <Repo />
     </div>
   </div>
 );

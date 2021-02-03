@@ -6,8 +6,9 @@ import './style.scss';
 
 // Component
 const ReposResults = () => (
-  <div>
+  <div className="results">
     <input
+      className="results__input"
       type="text"
       placeholder="La recherche a donné X résultats"
     />
