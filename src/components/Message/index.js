@@ -10,14 +10,9 @@ import './style.scss';
 // Component
 const Message = () => (
   <div className="wrapper">
-    <div className="repo">
+    <ul className="repo">
       <Repo />
-      <Repo />
-      <Repo />
-      <Repo />
-      <Repo />
-      <Repo />
-    </div>
+    </ul>
   </div>
 );
 

@@ -7,6 +7,7 @@ import ReposResults from 'src/components/ReposResults';
 import Message from 'src/components/Message';
 
 // Import data
+import reposData from 'src/data/repos';
 import logoGithub from './logo-github.png';
 import './style.scss';
 
@@ -16,7 +17,7 @@ const Github = () => (
     <img className="logo" src={logoGithub} alt="github logo" />
     <SearchBar />
     <ReposResults />
-    <Message />
+    <Message repos={reposData} />
   </div>
 );
 
