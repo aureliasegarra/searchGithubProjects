@@ -1,49 +1,56 @@
 // Import npm
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import axios from 'axios';
 
 // Import data
 import './style.scss';
 
 // Component
-const SearchBar = () => {
-  
-  const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(true);
+class SearchBar extends React.component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: '',
+      results: {},
+      loading: false,
+      message: '',
+    };
+  }
+
+  fetchSearchResults = (updatedPageNo = '', query) => {
+    const pageNumber = updatedPageNo ? `&page=${updatedPageNo}` : '';
+    const searchUrl = `https://api.github.com/search/repositories?q=${query}${pageNumber}`;
+    axios.get(searchUrl)
+      .then((response) => {
+        const resultNotFoundMsg = !response.data.items.length ? 'no more search results' : '';
+        this.setState({
+          results: response.data.items,
+          message: resultNotFoundMsg,
+          currentPageNo: updatedPageNo,
+          loading: false,
+        });
+      }).catch((error) => {
+        console.log(error);
+      });
+  };
 
   handleOnInputChange = (event) => {
     const query = event.target.value;
-    this.setState({
-      query,
-      loading: true,
-      message: '',
-    })
-  };
-
-
-  const loadResults = async () => {
-    setLoading(true);
-
-    try {
-      const response = await axios.get(`https://api.github.com/search/repositories?q=${query}`);
-      setResults(response.data);
-    } catch (error) {
-      console.log(error);
+    if (!query) {
+      this.setState({ query, results: {}, message: '' });
     }
-    finally {
-      setLoading(false);
+    else {
+      this.setState({ query, loading: true, message: '' }, () => {
+        this.fetchSearchResults(1, query);
+      });
     }
   };
-   
-  useEffect(()=> {
-    loadResults();
-  }, []);
 
-
+  // eslint-disable-next-line consistent-return
   renderSearchResults = () => {
     const { results } = this.state;
 
-    if (Object.keys(results).length && results.legnth) {
+    if (results.length) {
       return (
         <div className="results__container">
           {results.map((result) => (
@@ -58,17 +65,17 @@ const SearchBar = () => {
           ))}
         </div>
       );
-    };
+    }
   }
 
-  return (
+  render() {
     const { query } = this.state;
-
     return (
       <div className="container">
         <label className="search-label" htmlFor="search-input">
           <input
             type="text"
+            name="query"
             value={query}
             id="search-input"
             placeholder="Search ..."
@@ -79,9 +86,8 @@ const SearchBar = () => {
         {this.renderSearchResults()}
       </div>
     );
-
-  )
-};
+  }
+}
 
 // Export
 export default SearchBar;
