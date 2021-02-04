@@ -28,11 +28,14 @@ const Github = () => {
   const [inputValue, setInputValue] = useState('');
   const [searchQuery, setSearchQuery] = useState(''); // to store the data for submission
 
+  const [loading, setLoading] = useState(false);
+
   const baseUrl = `https://api.github.com/search/repositories?q=${searchQuery}`;
 
   useEffect(async () => {
     if (searchQuery) {
       try {
+        setLoading(true);
         const response = await axios.get(baseUrl);
         const items = repoParser(response.data.items);
         console.log(items);
@@ -40,6 +43,9 @@ const Github = () => {
       }
       catch (error) {
         console.log(error);
+      }
+      finally {
+        setLoading(false);
       }
     }
   }, [searchQuery]);
@@ -51,6 +57,7 @@ const Github = () => {
         inputValue={inputValue}
         onChangeInputValue={setInputValue}
         onSubmitForm={setSearchQuery}
+        isLoading={loading}
       />
       <Message message="la recherche a trouvé X résultats" />
       <Repos repos={repos} />
