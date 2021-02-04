@@ -4,14 +4,14 @@ body {
   min-height: 100vh;
   font-family: sans-serif, serif;
   line-height: 1.6;
-  background-color: #fff;
+  background-color:v.$primary-color;
 }
 
 .git {
   width: 80%;
   margin: 1em auto;
   text-align: center;
-  background-color: v.$primary-color;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
 }

@@ -27,8 +27,9 @@ const Github = () => {
   const [repos, setRepos] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [searchQuery, setSearchQuery] = useState(''); // to store the data for submission
-
   const [loading, setLoading] = useState(false);
+  const [total, setTotal] = useState(0);
+  const [message, setMessage] = useState('');
 
   const baseUrl = `https://api.github.com/search/repositories?q=${searchQuery}`;
 
@@ -36,10 +37,13 @@ const Github = () => {
     if (searchQuery) {
       try {
         setLoading(true);
+        setMessage('Veuillez patienter');
         const response = await axios.get(baseUrl);
         const items = repoParser(response.data.items);
-        console.log(items);
         setRepos(items);
+        const totalResults = response.data.total_count;
+        setTotal(totalResults);
+        setMessage(`La recherche a donné ${totalResults} message${totalResults > 1 ? 's' : ''}`);
       }
       catch (error) {
         console.log(error);
@@ -59,7 +63,7 @@ const Github = () => {
         onSubmitForm={setSearchQuery}
         isLoading={loading}
       />
-      <Message message="la recherche a trouvé X résultats" />
+      <Message message={message} />
       <Repos repos={repos} />
     </div>
   );

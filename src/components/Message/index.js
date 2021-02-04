@@ -12,7 +12,7 @@ const Message = ({ message }) => (
 );
 
 Message.propTypes = {
-  message: PropTypes.string.isRequired,
+  message: PropTypes.func.isRequired,
 };
 
 // Export
