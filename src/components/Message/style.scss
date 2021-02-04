@@ -3,12 +3,13 @@
 .result__input {
   margin: auto;
   width: 30%;
+  min-width: 30%;
   border: none;
+  box-shadow: 5px 5px 5px rgb(200, 200, 200);
   padding: 15px;
   height: 40px;
   border-radius: 5px;
-  color: #9DBFAF;
-  box-sizing: border-box;
-  outline: none;
+  color: gray;
   font-size: 15px;
+  font-weight: bold;
 }
