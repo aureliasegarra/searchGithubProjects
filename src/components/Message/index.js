@@ -1,20 +1,19 @@
 // Import npm
 import React from 'react';
-
-// Import component
-import Repo from './Repo';
-
+import PropTypes from 'prop-types';
 // Import data
 import './style.scss';
 
 // Component
-const Message = () => (
-  <div className="wrapper">
-    <ul className="repo">
-      <Repo />
-    </ul>
+const Message = ({ message }) => (
+  <div className="result__input">
+    {message}
   </div>
 );
+
+Message.propTypes = {
+  message: PropTypes.string.isRequired,
+};
 
 // Export
 export default Message;
